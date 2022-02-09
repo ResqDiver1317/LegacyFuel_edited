@@ -1,4 +1,5 @@
-# NOTE FROM RESQ#1317: I take no credit for the original work for LegacyFuel or for the Money Script/Framework done by Andyyy7666. I've simply taken Andyyy7666's forked version of LegacyFuel and made the needed edits so it's compatible with the newer version of Andyyy's money script and/or framework as well as added functionality to not charge for fueling emergency vehicles if desired.
+# NOTE FROM RESQ#1317: 
+I take no credit for the original work for LegacyFuel or for the Money Script/Framework done by Andyyy7666. I've simply taken Andyyy7666's forked version of LegacyFuel and made the needed edits so it's compatible with the newer version of Andyyy's money script and/or framework as well as added functionality to not charge for fueling emergency vehicles if desired.
 
 # About Resq#1317's edits.
 This edit of Legacy fuel is an updated version of Andyyy7666's version to work with his updated money script. In addition to making the needed edits so this works properly with Andyyy7666's money script, I have also added code to support use with his framework as well. I also added functionality to NOT charge for fueling emergency vehicles as realistically, emergency personnel would not pay out of pocket for fuel in department vehicles. Instead of being charged, they are shown a message that says "Your department was billed for your fuel."
