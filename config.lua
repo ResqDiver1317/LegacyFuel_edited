@@ -17,6 +17,8 @@ Config.DisableKeys = {0, 22, 23, 24, 29, 30, 31, 37, 44, 56, 82, 140, 166, 167, 
 
 -- If you wan't to use the hud, or fuel bar then turn this to true.
 Config.EnableHUD = true
+-- If you prefer the original style fuel bar, set this to true. Setting to false will display a fuel percentage number instead.
+Config.FuelBar = true
 
 -- Configure blips here. Turn both to false to disable blips all together.
 Config.ShowNearestGasStationOnly = false
