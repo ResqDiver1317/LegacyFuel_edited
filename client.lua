@@ -345,7 +345,7 @@ elseif Config.ShowAllGasStations then
 	end)
 end
 
-if Config.EnableHUD then
+if Config.EnableHUD == true and Config.FuelBar == false then
 	local function DrawAdvancedText(x,y ,w,h,sc, text, r,g,b,a,font,jus)
 		SetTextFont(font)
 		SetTextProportional(0)
@@ -409,3 +409,31 @@ if Config.EnableHUD then
 		end
 	end)
 end
+
+if Config.EnableHUD == true and Config.FuelBar == true then
+	Citizen.CreateThread(function()
+		while true do
+			local vehicle = GetVehiclePedIsIn(ped) -- Is The Player in a vehicle?
+			local driver = GetPedInVehicleSeat(vehicle, -1) -- Is The Player in the Driver Seat?
+			local dead = IsPedDeadOrDying(ped, true) -- Is The Player dead or dying?
+			local class = GetVehicleClass(vehicle) -- What class of vehicle? Ignore bikes.
+
+			if (vehicle ~= 0) and (class ~= 13) and not inBlacklisted then
+				-- If IN a vehicle, and NOT a bike, and vehicle engine IS running then
+				if driver and not dead then
+					-- If The Player is in the Driver Seat and IS NOT dead
+					local currentFuel = GetVehicleFuelLevel(vehicle) -- Current Fuel In Vehicle
+					local fuelWidth = (barWidth * currentFuel) / 100 -- Fuel Value x Max Bar Width Show The Level Range Within The Bar
+
+					DrawRect(barPos.x, barPos.y, barWidth, barHeight + 0.006, 40, 40, 40, 150)  -- Bar Background (Black)
+					DrawRect(barPos.x, barPos.y, barWidth, barHeight, 206, 145, 40, 100)  -- Bar Background (lighter yellow)
+					DrawRect(barPos.x - (barWidth - fuelWidth) / 2, barPos.y, fuelWidth, barHeight, 206, 145, 0, 255)  -- Current Fuel (Yellow)
+				else
+					Wait(500) -- Wait and don't crash
+				end
+			end
+			Citizen.Wait(0)
+		end
+	end)
+end
+
